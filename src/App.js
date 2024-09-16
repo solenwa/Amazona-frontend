@@ -3,17 +3,18 @@ import { useContext } from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
+import { Store } from './Store';
 import HomeScreen from './screens/HomeScreen';
 import ProductScreen from './screens/ProductScreen';
+import CartScreen from './screens/CartScreen';
+import SigninScreen from './screens/SigninScreen';
+import { LinkContainer } from 'react-router-bootstrap';
+import Badge from 'react-bootstrap/esm/Badge';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import Container from 'react-bootstrap/Container';
-import { LinkContainer } from 'react-router-bootstrap';
-import Badge from 'react-bootstrap/esm/Badge';
-import { Store } from './Store';
-import CartScreen from './screens/CartScreen';
-import SigninScreen from './screens/SigninScreen';
 import NavDropDown from 'react-bootstrap/NavDropdown';
+import ShippingAddressScreen from './screens/ShippingAddressScreen';
 
 function App() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
@@ -22,6 +23,7 @@ function App() {
   const signoutHandler = () => {
     ctxDispatch({ type: 'USER_SIGNOUT' });
     localStorage.removeItem('userInfo');
+    localStorage.removeItem('shippingAddress');
   };
 
   return (
@@ -76,6 +78,7 @@ function App() {
               <Route path="/" element={<HomeScreen />} />
               <Route path="/cart" element={<CartScreen />} />
               <Route path="/signin" element={<SigninScreen />} />
+              <Route path="/shipping" element={<ShippingAddressScreen />} />
               <Route path="/product/:slug" element={<ProductScreen />} />
             </Routes>
           </Container>
