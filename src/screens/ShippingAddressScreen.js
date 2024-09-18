@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/esm/Button';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Store } from '../Store';
 import CheckoutSteps from '../components/CheckoutSteps';
 
@@ -25,7 +25,7 @@ export default function ShippingAddressScreen() {
     if (!userInfo) {
       navigate('/signin?redirect=/shipping');
     }
-  }, [userInfo]);
+  }, [userInfo, navigate]);
 
   const submitHandler = (e) => {
     e.preventDefault();
