@@ -1,5 +1,4 @@
 import React, { useContext, useReducer, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { Store } from '../Store';
 import { Helmet } from 'react-helmet-async';
 import { toast } from 'react-toastify';
